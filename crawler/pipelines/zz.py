@@ -45,6 +45,8 @@ class ZZPipeline:
         try:
             data = self._extract_data(item)
             self._buffer.append(data)
+            if len(self._buffer) > 100:
+                self.send_items()
         finally:
             return item
 
