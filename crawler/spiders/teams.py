@@ -21,10 +21,16 @@ class TeamAPI(scrapy.Spider):
         return [scrapy.Request(self.teams_url, callback=self.parse)]
 
     def parse(self, response):
-        for team in self.parse_teams_response(response):
-            for member in team['members']:
-                yield scrapy.Request(urljoin(self.users_url, member), callback=self.parse_user)
-            yield team
+        teams = json.loads(response.body_as_unicode())
+        for team in teams:
+            yield scrapy.Request(urljoin(self.teams_url, team['team_id']), callback=self.parse_team)
+
+    def parse_team(self, response):
+        team_data = json.loads(response.body_as_unicode())
+        team = Team.load(team_data)
+        for member in team['members']:
+            yield scrapy.Request(urljoin(self.users_url, member), callback=self.parse_user)
+        yield team
 
     def parse_user(self, response):
         user = json.loads(response.body_as_unicode())
@@ -36,4 +42,4 @@ class TeamAPI(scrapy.Spider):
             for team in teams:
                 yield Team.load(team)
         else:
-            yield [Team.load(teams)]
+            return Team.load(teams)

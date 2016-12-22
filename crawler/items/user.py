@@ -9,6 +9,8 @@ from crawler.common.item import ZbiderItem
 
 def user_teams(teams, item=None):
     serialized = []
+    if not teams:
+        return serialized
     for team in teams:
         if 'nickname' in team:
             serialized.append(team['nickname'])

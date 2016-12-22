@@ -18,6 +18,7 @@ BOT_NAME = 'zbider'
 SPIDER_MODULES = ['crawler.spiders']
 NEWSPIDER_MODULE = 'crawler.spiders'
 
+# LOG_LEVEL = 'DEBUG'
 LOG_LEVEL = 'INFO'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -70,8 +71,8 @@ DOWNLOADER_MIDDLEWARES = {
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
    'crawler.pipelines.SerializerPipeline': 100,
-   'crawler.pipelines.ZZPipeline': 900,
-   # 'crawler.pipelines.ElasticsearchPipeline': 1000,
+   # 'crawler.pipelines.ZZPipeline': 900,
+   'crawler.pipelines.ElasticsearchPipeline': 1000,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
@@ -98,8 +99,10 @@ ITEM_PIPELINES = {
 
 #### CUSTOM SETTINGS
 
-TEAM_URL = 'http://localhost:3000/teams/'
-USER_URL = 'http://localhost:3000/users/'
+# TEAM_URL = 'http://localhost:3000/teams/'
+TEAM_URL = 'https://teams.auth.zalando.com/api/teams/'
+# USER_URL = 'http://localhost:3000/users/'
+USER_URL = 'https://users.auth.zalando.com/api/employees/'
 
 GHE_URL = 'https://github.bus.zalan.do/api/v3'
 GHE_TOKEN = open(os.path.join(package_path, 'ghe.key')).read()
