@@ -84,7 +84,7 @@ class ZmonAlert(ZbiderItem):
 class ZmonDashboard(ZbiderItem):
 
     tags_fields = ('title',)
-    default_tags_str = 'zmon dashboard'
+    default_tags_str = 'zmon dashboard alerts'
 
     raw_data = True
 
@@ -111,7 +111,7 @@ class ZmonDashboard(ZbiderItem):
 class ZmonGrafana(ZbiderItem):
 
     tags_fields = ('title',)
-    default_tags_str = 'zmon grafana'
+    default_tags_str = 'zmon grafana dashboard'
 
     raw_data = True
 

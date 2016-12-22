@@ -24,6 +24,10 @@ def github_accounts(accounts, item=None):
     return res
 
 class User(ZbiderItem):
+
+    tags_fields = ['job_title', 'email', 'login']
+    default_tags_str = 'user employee'
+
     name = scrapy.Field()
     full_name = scrapy.Field()
     email = scrapy.Field()

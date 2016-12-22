@@ -7,7 +7,7 @@ import scrapy
 from crawler.common.item import ZbiderItem
 
 
-def infrastructure_account(accounts):
+def infrastructure_account(accounts, item=None):
     serialized = []
     for account in accounts:
         serialized.append({'name': account['name'], 'provider': account['provider'], 'id': account['id']})
@@ -16,6 +16,9 @@ def infrastructure_account(accounts):
 
 
 class Team(ZbiderItem):
+
+    tags_fields = []
+    default_tags_str = 'team'
 
     id = scrapy.Field()
     team_id = scrapy.Field()

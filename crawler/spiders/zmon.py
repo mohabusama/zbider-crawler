@@ -31,12 +31,12 @@ class ZmonSpider(scrapy.Spider):
 
     def parse_checks(self, response):
         checks = json.loads(response.body_as_unicode()).get('check_definitions')
-        for check in checks[:1]:
+        for check in checks:
             yield ZmonCheck.load(check)
 
     def parse_alerts(self, response):
         alerts = json.loads(response.body_as_unicode()).get('alert_definitions')
-        for alert in alerts[:1]:
+        for alert in alerts:
             yield ZmonAlert.load(alert)
 
     def parse_search(self, response):
@@ -45,9 +45,9 @@ class ZmonSpider(scrapy.Spider):
         dashboards = search['dashboards']
         grafana_dashboards = search['grafana_dashboards']
 
-        for dashboard in dashboards[:1]:
+        for dashboard in dashboards:
             yield ZmonDashboard.load(dashboard)
 
-        for grafana in grafana_dashboards[:1]:
+        for grafana in grafana_dashboards:
             yield ZmonGrafana.load(dashboard)
 

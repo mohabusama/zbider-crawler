@@ -37,6 +37,7 @@ class ElasticsearchPipeline:
     def process_item(self, item, spider):
         try:
             item_copy = copy.deepcopy(item)
+            item_copy = item.copy()
             item_copy.pop('zbider_raw_data', None)
             self.index_item(item_copy)
         finally:
@@ -47,10 +48,12 @@ class ElasticsearchPipeline:
             self.send_items()
 
     def index_item(self, item):
+        data = dict(item)
+        data['tags'] = item.get_tags()
         index_action = {
             '_index': self._es_index,
             '_type': item.get_name(),
-            '_source': dict(item)
+            '_source': data
         }
 
         self._buffer.append(index_action)
