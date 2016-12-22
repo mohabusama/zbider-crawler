@@ -104,7 +104,7 @@ USER_URL = 'http://localhost:3000/users/'
 GHE_URL = 'https://github.bus.zalan.do/api/v3'
 GHE_TOKEN = open(os.path.join(package_path, 'ghe.key')).read()
 # GHE_USERS = ('mabdelhameed', 'hackweek', 'aryszka')
-GHE_USERS = ('mabdelhameed', 'eagleeye')
+GHE_USERS = ('mabdelhameed', 'eagleeye', 'aryszka', 'hackweek')
 
 
 ZMON_URL = 'https://zmon.zalando.net'
