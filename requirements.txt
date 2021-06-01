@@ -5,5 +5,5 @@ six==1.10.0
 stups-tokens==1.0.19
 stups-zign==1.0.33
 Twisted==16.6.0
-urllib3==1.19.1
+urllib3==1.26.5
 zmon-cli==1.0.59
