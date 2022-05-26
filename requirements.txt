@@ -4,6 +4,6 @@ Scrapy==1.2.2
 six==1.10.0
 stups-tokens==1.0.19
 stups-zign==1.0.33
-Twisted==16.6.0
+Twisted==22.4.0
 urllib3==1.19.1
 zmon-cli==1.0.59
