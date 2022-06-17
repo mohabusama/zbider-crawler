@@ -1,6 +1,6 @@
 elasticsearch==5.0.1
 requests==2.12.4
-Scrapy==1.2.2
+Scrapy==2.6.1
 six==1.10.0
 stups-tokens==1.0.19
 stups-zign==1.0.33
